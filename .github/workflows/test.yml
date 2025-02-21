@@ -23,9 +23,9 @@ jobs:
         
     - name: Make changes
       run: |
-        # Your script to make changes
-        git add .
-        git commit -m "Automated commit"
+        echo "This file was updated automatically" >> somefile.txt
+        git add somefile.txt
+        git commit -m "Daily auto commit"
 
     - name: Push changes
       env:

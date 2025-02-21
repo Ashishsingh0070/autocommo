@@ -2,9 +2,9 @@ name: Auto Commit
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 * * *'  # This runs daily at midnight UTC (you can change this to your preferred schedule)
+      
 
 jobs:
   build:
@@ -16,7 +16,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+    - name: Set up Git configuration
+      run: |
+        git config user.name 'Ashish kumar Singh'
+        git config user.email 'as2429539@gmail.com'
+        
     - name: Make changes
       run: |
         # Your script to make changes

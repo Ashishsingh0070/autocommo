@@ -25,6 +25,7 @@ jobs:
         git config user.email 'as2429539@gmail.com'
 
     - name: Push changes to GitHub
-      uses: ad-m/github-push-action@v0.6
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub provides this token automatically
+      run: |
+        git push https://github.com/${{ github.repository }} HEAD:${{ github.ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

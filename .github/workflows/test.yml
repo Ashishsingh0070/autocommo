@@ -13,16 +13,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Make changes (optional, you can modify files)
-      run: |
-        echo "This file was updated automatically" >> somefile.txt
-        git add somefile.txt
-        git commit -m "Daily auto commit"
-
     - name: Set up Git configuration
       run: |
         git config user.name 'Ashish kumar singh'
         git config user.email 'as2429539@gmail.com'
+
+    - name: Make changes to a file
+      run: |
+        echo "This file was updated automatically" >> somefile.txt
+        git add somefile.txt
+        git commit -m "Daily auto commit"
 
     - name: Push changes to GitHub
       run: |

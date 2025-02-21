@@ -1,0 +1,29 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This runs daily at midnight UTC
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Make changes (optional, you can modify files)
+      run: |
+        echo "This file was updated automatically" >> somefile.txt
+        git add somefile.txt
+        git commit -m "Daily auto commit"
+
+    - name: Set up Git configuration
+      run: |
+        git config user.name 'Ashish kumar singh'
+        git config user.email 'as2429539@gmail.com'
+
+    - name: Push changes to GitHub
+      uses: ad-m/github-push-action@v0.6
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub provides this token automatically
